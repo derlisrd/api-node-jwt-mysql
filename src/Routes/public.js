@@ -5,4 +5,6 @@ const router = Router()
 
 router.get('/posts',PostController.all);
 
+router.get('/post/:slug',PostController.findBySlug)
+
 export default router

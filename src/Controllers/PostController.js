@@ -3,7 +3,21 @@ import Post from "../Models/Post.js"
 
 class PostController{
 
-
+    static findBySlug = async(req,res)=>{
+        try {
+            const {slug} = req.params
+            const targetSlug = slug;
+            let post = await Post.findOne({
+                where: {slug: targetSlug}
+            })
+            if(post){
+                return res.json({response:true,first:post,results:[post]})
+            }
+            return res.status(404).json({response:false,message:'Post not found'})
+        } catch (err) {
+            return res.status(500).json({response:false,message:err})
+        }
+    }
     static find = async(req,res)=>{
         try {
             const {id} = req.params
