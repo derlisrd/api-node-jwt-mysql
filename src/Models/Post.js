@@ -7,6 +7,11 @@ const Post = conexionDB.sequelize.define('posts', {
       primaryKey: true,
       autoIncrement: true
     },
+    slug: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique:true
+    },
     title: {
       type: DataTypes.STRING,
       allowNull: false
