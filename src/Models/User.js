@@ -24,7 +24,7 @@ const User = conexionDB.sequelize.define('users', {
       allowNull: false
     },
     rol:{
-      type: DataTypes.INTEGER(1),
+      type: DataTypes.TINYINT(1),
       defaultValue:1,
       allowNull:false
     }
