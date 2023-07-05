@@ -8,8 +8,11 @@ import routevalidator from './src/Middleware/routevalidator.js'
 
 
 const app = express()
-
-app.use(cors({origin:'*'}))
+const corsOptions = {
+    origin: ['https://ruizdiaz.dev', 'https://www.ruizdiaz.dev'], // Aquí añade los dominios permitidos
+    methods: ['GET', 'POST','DELETE','PUT'], // Métodos HTTP permitidos
+  };
+app.use(cors(corsOptions));
 app.use(express.json())
 app.use(express.urlencoded({extended:false}))
 

@@ -7,6 +7,14 @@ const Post = conexionDB.sequelize.define('posts', {
       primaryKey: true,
       autoIncrement: true
     },
+    category_id: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+    },
+    user_id: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+    },
     slug: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -18,11 +26,16 @@ const Post = conexionDB.sequelize.define('posts', {
     },
     description: {
       type: DataTypes.TEXT,
-      allowNull: false
+      allowNull: true
     },
     body: {
       type: DataTypes.TEXT,
-      allowNull: false
+      allowNull: true
+    },
+    visibility:{
+      type:DataTypes.BOOLEAN,
+      allowNull:false,
+      defaultValue:1
     }
   },{
     

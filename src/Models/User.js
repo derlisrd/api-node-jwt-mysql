@@ -7,6 +7,10 @@ const User = conexionDB.sequelize.define('users', {
       primaryKey: true,
       autoIncrement: true
     },
+    name: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -18,6 +22,11 @@ const User = conexionDB.sequelize.define('users', {
     password: {
       type: DataTypes.TEXT,
       allowNull: false
+    },
+    rol:{
+      type: DataTypes.INTEGER(1),
+      defaultValue:1,
+      allowNull:false
     }
   },{
     

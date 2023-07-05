@@ -22,7 +22,7 @@ const migrations = async () => {
       })
       await Promise.all(modelos)
       
-      const result = await sequelize.sync();
+      const result = await sequelize.sync({ /* alter: true */force:true });
       console.log("Migraciones ejecutadas correctamente:", result);
     
     } catch (error) {
