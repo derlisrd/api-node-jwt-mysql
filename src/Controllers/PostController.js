@@ -3,6 +3,35 @@ import Post from "../Models/Post.js"
 
 class PostController{
 
+
+    static findByWhere = async(req,res)=>{
+        try {
+            let { page=1, limit=10, sortBy = 'createdAt', sortOrder = 'DESC',searchBy,searchValue='' } = req.query;
+
+            let whereCondition = {};
+            whereCondition= { visibility: true}
+
+            if (searchBy ) {
+                whereCondition[searchBy] ={
+                        [Op.like]: `%${searchValue}%`
+                    }
+            }
+
+            
+            
+            const posts = await Post.findAll({
+                where: whereCondition,
+                offset: (page - 1) * limit,
+                limit: +limit,
+                order: [[sortBy, sortOrder]],
+              });
+            return res.json({response:true,results:posts})
+
+        } catch (err) {
+            return res.status(500).json({response:false,message:err})
+        }
+    }
+
     static findBySlug = async(req,res)=>{
         try {
             const {slug} = req.params
@@ -47,7 +76,7 @@ class PostController{
                         [Op.like]: `%${searchValue}%`
                     }
                 };
-                console.log(whereCondition);
+                //console.log(whereCondition);
             }
 
             const posts = await Post.findAll({
