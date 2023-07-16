@@ -17,13 +17,13 @@ class AuthController{
             
             if (match) {
                 const token = generateToken({ id: usuario.id });
-                return res.json({token})
+                return res.json({token,response:true})
             } else {
                 return res.status(401).json({response:false,message:"Credenciales inválidas"})
             }
 
         } catch (err) {
-            return res.status(500).json({response:false,message:err})
+            return res.status(200).json({response:false,message:err})
         }
         
     }
