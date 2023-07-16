@@ -8,8 +8,10 @@
     "dev": "nodemon index.js",
     "start": "node index.js",
     "migrate": "node src/Database/migrations.js",
+    "migrate:force": "node src/Database/migrations.js --force",
     "new-model": "node ./src/App/generate-model.js",
-    "new-controller": "node ./src/App/generate-controller.js"
+    "new-controller": "node ./src/App/generate-controller.js",
+    "seed": "node ./src/Database/seed.js"
   },
   "keywords": [],
   "author": "Derlis Ruiz Diaz",

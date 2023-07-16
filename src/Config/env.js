@@ -13,7 +13,8 @@ const env = {
     DB_HOST: process.env.DB_HOST,
     TOKEN_EXPIRED_MINUTES: process.env.TOKEN_EXPIRED_MINUTES,
     SECRET_JWT: process.env.SECRET_JWT,
-    X_API_KEY: process.env.X_API_KEY
+    X_API_KEY: process.env.X_API_KEY,
+    PASSWORD_USER: process.env.PASSWORD_USER
 }
 
 export default env

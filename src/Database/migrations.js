@@ -1,5 +1,4 @@
 // Ejecuta las migraciones
-
 import { sequelize } from "./conexion.js";
 import { readdirSync } from 'fs'
 import path from 'path';
@@ -21,8 +20,13 @@ const migrations = async () => {
          modelos.push( import(`../Models/${filename}`) )
       })
       await Promise.all(modelos)
-      
-      const result = await sequelize.sync({ /* alter: true */force:true });
+      const force = process.argv.includes('--force');
+      let result;
+      if(force){
+        result = await sequelize.sync({ /* alter: true */force:true })
+      }else{
+        result = await sequelize.sync({ /* alter: true */force:false })
+      }
       console.log("Migraciones ejecutadas correctamente:", result);
     
     } catch (error) {
